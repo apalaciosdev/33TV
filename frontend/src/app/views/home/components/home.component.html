@@ -1,0 +1,42 @@
+<!-- <div class="content app-home">
+  <div class="control">
+    <input class="input" type="text" placeholder="Buscar" [(ngModel)]="query" (keyup.enter)="searchMedia()">
+  </div>
+  
+  
+  <div class="columns is-desktop" *ngFor="let media of data">
+    <div class="column">
+     
+      <a [routerLink]="['/select-link', media.link, media.dataType]">{{ media.title }}</a>
+
+
+      <a>{{media.dataType}}</a>
+   
+      <img src="{{media.img}}" alt="">
+    </div>
+  </div>
+
+</div> -->
+
+
+<div class="cover home">
+  <h1>¿Que te apetece ver hoy?</h1>
+  <div  class="flex-form">
+    <label for="from">
+      <i class="ion-location"></i>
+    </label>
+    <input type="search" placeholder="Busca lo que quieras" [(ngModel)]="query" (keyup.enter)="searchMedia()">
+    <input type="submit" value="Buscar" (click)="searchMedia()">
+  </div>
+  <div class="" *ngFor="let media of data">
+    <div class="column">
+     
+      <a [routerLink]="['/select-link', media.link, media.dataType]">{{ media.title }}</a>
+
+
+      <a>{{media.dataType}}</a>
+   
+      <img src="{{media.img}}" alt="">
+    </div>
+  </div>
+</div>

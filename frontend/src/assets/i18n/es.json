@@ -1,0 +1,29 @@
+{
+  "login": {
+    "username": "Enter your user name",
+    "password": "Password here"
+  },
+  "errors": {
+		"generic": "Sha produït un problema tècnic, torni a intentar-ho més tard",
+		"senseMissatge": "",
+		"versioAnterior": "",
+		"mateixaVersio": "",
+		"campObligatoriBuit": "El camp és obligatori",
+		"campNumericMajor0": "El camp numèric ha de ser major a 0",
+		"campMalFormat": "Format del camp incorrecte",
+		"required": "El campo es obligatorio",
+		"email": "Formato incorrecto",
+		"ageError": "Edad no permitida",
+		"pattern": "Formato incorrecto",
+		"notSamePassword": "Las contraseñas no coinciden",
+		"whiteSpaceLine": "Formato incorrecto",
+		"maxlength": "Has excedit el màxim de caràcters",
+		"minlength": "Formato incorrecto",
+		"maxlengthPermes": "Has arribat al màxim de caràcters",
+		"valueNoExist": "El valor introduït no existeix a la llista",
+		"introducedValueNoExist": "El requisit no existeix",
+		"errorInexistentTA": "El requisit no existeix ",
+		"number": "El camp ha de ser numèric",
+		"max": "Cantidad máxima sobrepasada"
+	}
+}

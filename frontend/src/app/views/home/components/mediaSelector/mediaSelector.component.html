@@ -1,0 +1,29 @@
+<div class="content app-home">
+  <div class="contentSearch">
+    <div class="flex-form">
+      <label for="from">
+        <i class="ion-location"></i>
+      </label>
+      <input type="search" placeholder="Busca lo que quieras" [(ngModel)]="query" (keyup.enter)="searchMedia()">
+      <input type="submit" value="Buscar" (click)="searchMedia()">
+    </div>
+  </div>
+  
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter" *ngFor="let media of data">
+      <div class="card" [routerLink]="['/select-link', media.link, media.dataType]">
+        <!-- Contenido de tu tarjeta aquí -->
+        <p>{{ media.title }}</p>
+        <!-- <a>{{ media.dataType }}</a> -->
+        <img src="{{ media.img }}" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="data.length === 0">
+    <h3>No hemos encontrado nada con el tema "{{lastQuery}}"</h3>
+  </div>
+  
+
+</div>
+

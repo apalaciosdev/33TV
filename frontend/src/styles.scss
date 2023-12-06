@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/css/variables.scss";
+
+
+.mt-10 {
+  margin-top: 4.5rem;
+}
+
+.mt-negative-navbar {
+  margin-top: -1rem !important;
+}
+
+.noPaddingNoMargin {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+html  {
+  // background-color: $scooter-950 !important;
+  background-color: rgb(10, 10, 10) !important;
+  color: white;
+}
+
+nav {
+  background-color: $scooter-800 !important;
+}

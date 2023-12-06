@@ -1,0 +1,28 @@
+<div *ngIf="type === 'movie'">
+  <!-- <div *ngFor="let safeHtml of safeHtmlArray">
+    <div [innerHTML]="safeHtml"></div>
+  </div> -->
+  <app-videoPlayer [data]="safeHtmlArray"></app-videoPlayer>
+</div>
+
+<div *ngIf="type === 'serie'">
+  <div *ngFor="let season of data | keyvalue">
+    <h2 (click)="toggleSeason(season.key)">{{ season.key }} <span>{{ isSeasonOpen(season.key) ? '[-]' : '[+]' }}</span></h2>
+    <div *ngIf="isSeasonOpen(season.key)">  
+      <div *ngFor="let episode of season.value" (click)="goTo('https://playdede.us' + episode.link)">
+        <div>{{ episode.title }}</div>
+        <div><img [src]="episode.img" alt="{{ episode.title }}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div>
+  <div *ngFor="let safeHtml of safeHtmlArray">
+    <button>Opcion X</button>
+    <div [innerHTML]="safeHtml"></div>
+  </div>
+</div> -->

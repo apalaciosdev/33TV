@@ -1,0 +1,93 @@
+$scooter-50: #ecfeff;
+$scooter-100: #d0f8fd;
+$scooter-200: #a7f1fa;
+$scooter-300: #6ae4f6;
+$scooter-400: #20cbe9;
+$scooter-500: #0ab0d0;
+$scooter-600: #0c8cae;
+$scooter-700: #11708d;
+$scooter-800: #175b73;
+$scooter-900: #184c61;
+$scooter-950: #1a2a32;
+
+
+
+
+// COLORS
+$white: #FFFFFF;
+$black: #000000;
+
+$yellow: #FEBF00;
+
+$grey1: #F5F5F5;
+$grey2: #DDDDDD;
+$grey3: #999999;
+$grey4: #666666;
+$grey5: #333333;
+$grey6: #afb6bd;
+$grey7: #ced4da;
+$grey8: #778899;
+$grey9: #706d6d;
+
+$border-content: #808080;
+$box-shadow-seccio: #15223214;
+$border-button: #dededf;
+$color-cercador: #00000066;
+$color-icon: #9a9a9a;
+$border-bottom-img: #00000029;
+$color-disabled: #f1f1f1;
+
+
+$vermell: #bf0000;
+$vermellClar: #ffcccc;
+$vermellFosc: #9d0000;
+
+$main-color: #C00000;
+$text-color: #333333;
+
+$color-icon-section: #FC4C00;
+
+// HEADER
+$bg-header: $grey5;
+$text-header: $white;
+
+// FOOTER
+$bg-footer: $grey2;
+
+// SHADOWS
+$shadow-box: 0px 0px 2px 0px;
+
+// BUTTONS COLORS
+$btn-main-bg: $main-color;
+$btn-main-text-color: $white;
+$btn-bg: $white;
+$btn-text-color: $main-color;
+
+// ALERTS COLORS
+$bg-error: #FFCCCC;
+$bg-success: #CCFFCC;
+$bg-warning: lighten($yellow, 40%);
+
+// PROGRESS BAR COLORS
+$progress-bar-color: #00BB00;
+
+// ICONS TOASTR
+$succes: #68A225; //També progress de les cards
+$warning: #FAD40F;
+$error: #DF3133;
+
+// ESTATS
+$publicat: #EF6F25;
+$activat: #71A137;
+$verificat: #FF8000;
+$obsolet: gray;
+
+$vigent: rgba($yellow, 1);
+$noVigent: rgba($grey4, 1);
+$prever: rgba($grey2, 1);
+
+// FONTS
+$normal: 'OpenSansRegular';
+$semibold: 'OpenSansSemibold';
+$fontawesome: 'Font Awesome 5 Free';
+$material: 'Material Icons';

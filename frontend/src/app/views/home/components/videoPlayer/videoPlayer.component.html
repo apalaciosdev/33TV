@@ -1,0 +1,24 @@
+<div class="wallpaper" [style.background-image]="'url(' + info.wallpaper + ')'" *ngIf="info.wallpaper">
+  <p class="top-left">{{info.title}} - {{info.date}}</p>
+  <p class="bottom-left">{{info.overview}}</p>
+</div>
+
+
+<div>
+  <div *ngFor="let safeHtml of safeHtmlArray">
+    <div [innerHTML]="safeHtml"></div>
+  </div>
+</div>
+
+<div *ngIf="data.length === 0">
+  <h3>No hay enlaces disponibles.</h3>
+</div>
+
+
+
+<!-- <div>
+  <div *ngFor="let safeHtml of safeHtmlArray">
+    <button>Opcion X</button>
+    <div [innerHTML]="safeHtml"></div>
+  </div>
+</div> -->
