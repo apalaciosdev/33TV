@@ -11,16 +11,17 @@
   
   <div class="columns is-multiline">
     <div class="column is-one-quarter" *ngFor="let media of data">
-      <div class="card" [routerLink]="['/select-link', media.link, media.dataType]">
+      <!-- <div class="card" [routerLink]="['/select-link', media.link, media.dataType]"> -->
+      <div class="card" (click)="goTo(media.link, media.dataType)">
         <!-- Contenido de tu tarjeta aquí -->
         <p>{{ media.title }}</p>
         <!-- <a>{{ media.dataType }}</a> -->
-        <img src="{{ media.img }}" alt="">
+        <img src="{{ media.image }}" alt="">
       </div>
     </div>
   </div>
 
-  <div *ngIf="data.length === 0">
+  <div *ngIf="data?.length === 0">
     <h3>No hemos encontrado nada con el tema "{{lastQuery}}"</h3>
   </div>
   

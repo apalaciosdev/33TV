@@ -8,7 +8,8 @@ export class AppSettings {
   public static API_SEARCH_MEDIA = '/media/search/';
   
   //POST
-  public static API_GET_LINKS = '/media/getLinks';
+  public static API_GET_REPRODUCERS = '/media/getReproducers';
+  public static API_GET_EPISODES = '/media/getEpisodes';
   
 
   // APIs Modalitats

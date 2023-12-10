@@ -14,7 +14,7 @@ const routes: Routes = [
 
   {path: '', component: HomeComponent},
   {path: 'search', component: MediaSelectorComponent},
-  {path: 'select-link/:link/:dataType', component: LinksSelectorComponent},
+  {path: 'select-link/:link', component: LinksSelectorComponent},
   {path: 'player', component: VideoPlayerComponent},
 ];
 @NgModule({

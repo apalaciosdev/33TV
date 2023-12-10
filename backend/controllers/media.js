@@ -99,7 +99,7 @@ const getEpisodes = async (req, res = response) => {
 const getReproducers = async (req, res = response) => {
   try {
     const { query } = req.body;
-
+    const resultados = [];
     const url = "https://playdede.us/" + query;
 
     const response = await axios.get(url, {
@@ -114,22 +114,72 @@ const getReproducers = async (req, res = response) => {
 
     const $ = cheerio.load(response.data);
 
-    const data = $('.linkSorter li[data-lang="ESP"] a')
-      .filter((index, element) => {
-        const href = $(element).attr('href');
-        return href && !/(download|file)/i.test(href);
-      })
-      .map((index, element) => {
-        return $(element).attr('href');
-      })
-      .get();
+    // Utiliza un bucle asíncrono
+    for (const element of $('.playerItem[data-lang="esp"]').toArray()) {
+      const dataLoadPlayer = $(element).attr('data-loadplayer');
+      if (dataLoadPlayer) {
+        const iframeUrl = `https://playdede.us/embed.php?id=${dataLoadPlayer}&width=431&height=540`;
+        await getIframe(iframeUrl, resultados);
+      }
+    }
 
-    return res.status(200).json(data);
+    console.log(resultados);
+    return res.status(200).json(resultados);
+
   } catch (error) {
     console.error("Error:", error.message);
     return res.status(500).json({ error: error.message });
   }
 };
+
+const getIframe = async (url, resultados) => {
+  try {
+    const iframeResponse = await axios.get(url);
+    const iframeHtml = iframeResponse.data;
+
+    // Utilizar Cheerio para extraer la etiqueta <iframe> y su contenido
+    const $iframe = cheerio.load(iframeHtml);
+    const $iframeTag = $iframe('iframe');
+
+    // Comprobar si ya existe el atributo sandbox
+    const sandboxAttribute = $iframeTag.attr('sandbox');
+
+    if (!sandboxAttribute) {
+      // Si no existe, agregar el atributo sandbox con los valores especificados
+      $iframeTag.attr('sandbox', 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation');
+    }
+
+    const iframeTag = $iframeTag.toString();
+    console.log(url, iframeTag);
+
+    // Ahora, puedes procesar o almacenar la etiqueta <iframe> en el array resultados
+    resultados.push(iframeTag);
+  } catch (error) {
+    console.error("Error obteniendo el iframe:", error.message);
+  }
+};
+
+
+
+
+async function extraerIframesCompleto(url) {
+  try {
+      const response = await axios.get(url);
+      const $ = cheerio.load(response.data);
+      const iframes = [];
+
+      $('iframe').each((index, element) => {
+          // Obtener la etiqueta completa del iframe como una cadena
+          const iframeString = $.html(element);
+          iframes.push(iframeString);
+      });
+
+      return iframes;
+  } catch (error) {
+      console.error(`Error al obtener ${url}: ${error.message}`);
+      return [];
+  }
+}
 
 
 const getTest = async(req, res = response ) => {

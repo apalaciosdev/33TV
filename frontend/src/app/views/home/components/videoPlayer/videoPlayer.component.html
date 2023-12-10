@@ -5,16 +5,16 @@
 
 
 <div>
-  <div *ngFor="let safeHtml of safeHtmlArray">
-    <div [innerHTML]="safeHtml"></div>
+  <div *ngFor="let safeHtml of safeHtmlArray; let i = index">
+    <div [innerHTML]="safeHtml" id="iframeContainer{{i}}"></div>
   </div>
 </div>
 
-<div *ngIf="data.length === 0">
+<div *ngIf="data?.length === 0">
   <h3>No hay enlaces disponibles.</h3>
 </div>
 
-
+<!-- <iframe src="https://waaw.ac/f/a9ciqKlY3pts/e/a9ciqKlY3pts?http_referer=&amp;autoplay=no&amp;embed_from=embed_from\" style="z-index:2147483647;width: 100%;height: 350px;max-height: 100%;max-width: 100%;min-height:100%;min-width:100%;\" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="0" scrolling="no"></iframe> -->
 
 <!-- <div>
   <div *ngFor="let safeHtml of safeHtmlArray">

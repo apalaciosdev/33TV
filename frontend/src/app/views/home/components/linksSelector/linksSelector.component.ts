@@ -12,10 +12,10 @@ export class LinksSelectorComponent implements OnInit {
   public data: any[] = [];
   public type: string = '';
   public link: string = '';
-  public dataType: string = '';
   safeHtmlArray: SafeHtml[] = [];
   public selectedIframe: number | null = null;
   openSeasons: { [key: string]: boolean } = {};
+  seasonStatus: boolean[] = [];
 
   constructor(
     public requestService: RequestService,
@@ -26,75 +26,41 @@ export class LinksSelectorComponent implements OnInit {
     private router: Router
   ) {}
 
-
-  
   ngOnInit() {
     this.route.params.subscribe(async paramsId => {
       this.link = paramsId['link'];
-      this.dataType = paramsId['dataType'];
       await this.getMediaLinks();
     });
+
+    // Inicializa el array seasonStatus con valores predeterminados (por ejemplo, todas las temporadas cerradas)
+    this.seasonStatus = new Array(this.data.length).fill(false);
   }
 
-  toggleSeason(season: string): void {
-    this.openSeasons[season] = !this.openSeasons[season];
+  toggleSeason(index: number): void {
+    this.seasonStatus[index] = !this.seasonStatus[index];
   }
 
-  isSeasonOpen(season: string): boolean {
-    return this.openSeasons[season] || false;
+  isSeasonOpen(index: number): boolean {
+    return this.seasonStatus[index];
   }
 
   public async getMediaLinks(serieLink?: string, type?: string) {
     this.link = serieLink ? AppSettings.GENERAL + '/' + serieLink : this.link;
-    this.dataType = type ? type : this.dataType;
     
-    if (this.dataType === 'movie') {
-      this.router.navigate(['/player'], { queryParams: {query: this.link} })
-    }
-
-    else {
-      this.requestService.post<any>(AppSettings.API_GET_LINKS, { link: this.link, dataType: this.dataType }).subscribe((res) => {
-        this.data = res.data;
-        this.type = res.type;
-  
-        this.safeHtmlArray = this.data.map(htmlString => this.sanitizer.bypassSecurityTrustHtml(htmlString));
-        this.setupIframeCommunication();
-      });
-    }
+    this.requestService.post<any>(AppSettings.API_GET_EPISODES, { query: this.link }).subscribe((res) => {
+      this.data = res;
+      // No inicialices el array aquí
+    });
   }
 
   public goTo(query: string) {
-    
-    this.router.navigate(['/player'], { queryParams: {query: query} })
-  }
-
-  selectIframe(index: number) {
-    if (this.selectedIframe === index) {
-      // Si el mismo botón se hace clic nuevamente, cierra el iframe
-      this.selectedIframe = null;
-    } else {
-      // Abre el nuevo iframe
-      this.selectedIframe = index;
-    }
-  }
-
-  private setupIframeCommunication() {
-    const iframe: HTMLIFrameElement | null = this.el.nativeElement.querySelector('iframe');
-
-    if (iframe) {
-      iframe.addEventListener('load', () => {
-        // Envía un mensaje al iframe
-        iframe.contentWindow?.postMessage('Hola desde el documento principal', '*');
-      });
-
-      // Escucha mensajes del iframe
-      window.addEventListener('message', (event) => {
-        // Verifica que el mensaje provenga del iframe
-        if (event.source === iframe.contentWindow) {
-          // Realiza acciones en respuesta al mensaje
-          console.log('Mensaje recibido en el documento principal:', event.data);
-        }
-      });
-    }
+    // Quita la parte específica del dominio de la URL
+    const modifiedQuery = query.replace('https://playdede.us/', '');
+  
+    // Muestra en la consola la URL modificada
+    console.log(modifiedQuery);
+  
+    // Navega a la ruta '/player' con el parámetro 'query' modificado
+    this.router.navigate(['/player'], { queryParams: { query: modifiedQuery } });
   }
 }

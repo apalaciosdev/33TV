@@ -45,16 +45,21 @@ export class VideoPlayerComponent implements OnInit {
   public async getMediaLinks() {
     this.dataType = 'movie';
 
-    this.requestService.post<any>(AppSettings.API_GET_LINKS, { link: this.link, dataType: this.dataType }).subscribe((res) => {
-      this.data = res.data;
-      this.safeHtmlArray = this.data.map(htmlString => this.sanitizer.bypassSecurityTrustHtml(htmlString));
+    this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link, }).subscribe((res) => {
+      this.data = res;
+      this.safeHtmlArray = this.data.map((htmlString, index) => {
+        const sanitizedHtmlString = htmlString.replace(/\\/g, '');
+        this.setupIframeCommunication(index); // Llama a la función con el índice
+        return this.sanitizer.bypassSecurityTrustHtml(sanitizedHtmlString);
+      });
+      
 
       this.info.wallpaper =	res.wallpaper;
       this.info.overview = res.overview;
       this.info.date = res.date;
       this.info.title = res.title;
 
-      this.setupIframeCommunication();
+      // this.setupIframeCommunication();
     });
   }
 
@@ -68,23 +73,24 @@ export class VideoPlayerComponent implements OnInit {
     }
   }
 
-  private setupIframeCommunication() {
-    const iframe: HTMLIFrameElement | null = this.el.nativeElement.querySelector('iframe');
-
-    if (iframe) {
-      iframe.addEventListener('load', () => {
-        // Envía un mensaje al iframe
-        iframe.contentWindow?.postMessage('Hola desde el documento principal', '*');
-      });
-
-      // Escucha mensajes del iframe
-      window.addEventListener('message', (event) => {
-        // Verifica que el mensaje provenga del iframe
-        if (event.source === iframe.contentWindow) {
-          // Realiza acciones en respuesta al mensaje
-          console.log('Mensaje recibido en el documento principal:', event.data);
-        }
-      });
+  private setupIframeCommunication(index: number) {
+    const iframeContainer: HTMLDivElement | null = this.el.nativeElement.querySelector(`#iframeContainer${index}`);
+    
+    if (iframeContainer) {
+      const iframe: HTMLIFrameElement | null = iframeContainer.querySelector('iframe');
+  
+      if (iframe) {
+        iframe.addEventListener('load', () => {
+          iframe.contentWindow?.postMessage('Hola desde el documento principal', '*');
+        });
+  
+        window.addEventListener('message', (event) => {
+          if (event.source === iframe.contentWindow) {
+            console.log('Mensaje recibido en el documento principal:', event.data);
+          }
+        });
+      }
     }
   }
+  
 }
