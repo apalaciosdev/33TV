@@ -1,0 +1,43 @@
+.tv-show-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+* {
+  color: white;
+}
+
+.season-container {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: white;
+  cursor: pointer;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.episode-item {
+ 
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.episode-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.episode-image {
+  max-width: 100%;
+  height: auto;
+}

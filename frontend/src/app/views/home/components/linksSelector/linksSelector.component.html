@@ -1,15 +1,14 @@
-
-
-<div>
-  <div *ngFor="let season of data; let i = index">
-    <h2 (click)="toggleSeason(i)">{{ season.seasonNumber }} <span>{{ isSeasonOpen(i) ? '[-]' : '[+]' }}</span></h2>
-    <div *ngIf="isSeasonOpen(i)">  
-      <div *ngFor="let episode of season.episodes" (click)="goTo('https://playdede.us' + episode.href)">
-        <div>{{ episode.title }}</div>
-        <div><img [src]="episode.imgSrc" alt="{{ episode.title }}"></div>
+<div class="tv-show-container">
+  <div *ngFor="let season of data; let i = index" class="season-container">
+    <h2 (click)="toggleSeason(i)">
+      {{ season.seasonNumber }}
+      <span>{{ isSeasonOpen(i) ? '[-]' : '[+]' }}</span>
+    </h2>
+    <div *ngIf="isSeasonOpen(i)" class="episode-list">
+      <div *ngFor="let episode of season.episodes" (click)="goTo('https://playdede.us' + episode.href)" class="episode-item">
+        <div class="episode-title">{{ episode.title }}</div>
+        <div><img [src]="episode.imgSrc" alt="{{ episode.title }}" class="episode-image"></div>
       </div>
     </div>
   </div>
 </div>
-
-

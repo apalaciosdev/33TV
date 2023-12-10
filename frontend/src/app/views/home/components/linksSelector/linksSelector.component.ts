@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-linksSelector',
-  templateUrl: './linksSelector.component.html'
+  templateUrl: './linksSelector.component.html',
+  styleUrls: ['./linksSelector.component.scss']
 })
 export class LinksSelectorComponent implements OnInit {
   public data: any[] = [];
@@ -32,7 +33,6 @@ export class LinksSelectorComponent implements OnInit {
       await this.getMediaLinks();
     });
 
-    // Inicializa el array seasonStatus con valores predeterminados (por ejemplo, todas las temporadas cerradas)
     this.seasonStatus = new Array(this.data.length).fill(false);
   }
 
@@ -49,18 +49,12 @@ export class LinksSelectorComponent implements OnInit {
     
     this.requestService.post<any>(AppSettings.API_GET_EPISODES, { query: this.link }).subscribe((res) => {
       this.data = res;
-      // No inicialices el array aquí
     });
   }
 
   public goTo(query: string) {
-    // Quita la parte específica del dominio de la URL
     const modifiedQuery = query.replace('https://playdede.us/', '');
   
-    // Muestra en la consola la URL modificada
-    console.log(modifiedQuery);
-  
-    // Navega a la ruta '/player' con el parámetro 'query' modificado
     this.router.navigate(['/player'], { queryParams: { query: modifiedQuery } });
   }
 }
