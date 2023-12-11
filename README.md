@@ -9,7 +9,7 @@ First of all, download this repository.
 Afterward, install Node.js: [Download Node.js](https://nodejs.org/en/download)  
 (Minimum required version: Node v18.16.0)
 
-Finally, start the services by executing **start33TV.bat**.
+Finally, start the services by executing **start33TV.bat** and open **localhost:4200** in your web browser.
 
 ## Advertisement
 
