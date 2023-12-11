@@ -123,7 +123,6 @@ const getReproducers = async (req, res = response) => {
       }
     }
 
-    console.log(resultados);
     return res.status(200).json(resultados);
 
   } catch (error) {
@@ -150,7 +149,6 @@ const getIframe = async (url, resultados) => {
     }
 
     const iframeTag = $iframeTag.toString();
-    console.log(url, iframeTag);
 
     // Ahora, puedes procesar o almacenar la etiqueta <iframe> en el array resultados
     resultados.push(iframeTag);
