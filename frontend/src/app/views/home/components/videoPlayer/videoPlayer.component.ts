@@ -1,8 +1,9 @@
-import { Component, OnInit, ElementRef, Renderer2, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppSettings } from 'src/app/app.settings';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-videoPlayer',
@@ -17,21 +18,28 @@ export class VideoPlayerComponent implements OnInit {
   safeHtmlArray: SafeHtml[] = [];
   public selectedIframe: number | null = null;
   openSeasons: { [key: string]: boolean } = {};
-
+  public pressedButtonIndex: number | null = null;
+  
+  
   constructor(
     public requestService: RequestService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private el: ElementRef,
-    private renderer: Renderer2
+    private location: Location
   ) {}
 
-   
   ngOnInit() {
     this.route.queryParams.subscribe(async params => {
       this.link = params['query'];
       await this.getMediaLinks();
     });
+    // this.location.subscribe((state) => {
+
+    //   console.log('URL anterior:', state.url);
+    // });
+
+        // Registra un observador para cambios en la URL
   }
 
   toggleSeason(season: string): void {
@@ -45,32 +53,42 @@ export class VideoPlayerComponent implements OnInit {
   public async getMediaLinks() {
     this.dataType = 'movie';
 
-    this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link, }).subscribe((res) => {
+    this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link }).subscribe((res) => {
       this.data = res;
       this.safeHtmlArray = this.data.map((htmlString, index) => {
         const sanitizedHtmlString = htmlString.replace(/\\/g, '');
-        this.setupIframeCommunication(index); // Llama a la función con el índice
+        this.setupIframeCommunication(index);
         return this.sanitizer.bypassSecurityTrustHtml(sanitizedHtmlString);
       });
-      
 
-      this.info.wallpaper =	res.wallpaper;
+      this.info.wallpaper = res.wallpaper;
       this.info.overview = res.overview;
       this.info.date = res.date;
       this.info.title = res.title;
-
-      // this.setupIframeCommunication();
     });
   }
 
   selectIframe(index: number) {
+    this.pressedButtonIndex = index;
+
     if (this.selectedIframe === index) {
-      // Si el mismo botón se hace clic nuevamente, cierra el iframe
+      this.closeIframe(this.selectedIframe);
       this.selectedIframe = null;
     } else {
-      // Abre el nuevo iframe
+      if (this.selectedIframe !== null) {
+        this.closeIframe(this.selectedIframe);
+      }
       this.selectedIframe = index;
+      this.openIframe(this.selectedIframe);
     }
+  }
+
+  private openIframe(index: number) {
+    // Puedes agregar lógica adicional si es necesario antes de abrir el iframe
+  }
+
+  private closeIframe(index: number) {
+    // Puedes agregar lógica adicional si es necesario antes de cerrar el iframe
   }
 
   private setupIframeCommunication(index: number) {
@@ -92,5 +110,4 @@ export class VideoPlayerComponent implements OnInit {
       }
     }
   }
-  
 }

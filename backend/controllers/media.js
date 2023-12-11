@@ -148,6 +148,10 @@ const getIframe = async (url, resultados) => {
       $iframeTag.attr('sandbox', 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation');
     }
 
+    // Quitar los atributos width y height
+    $iframeTag.removeAttr('width');
+    $iframeTag.removeAttr('height');
+
     const iframeTag = $iframeTag.toString();
 
     // Ahora, puedes procesar o almacenar la etiqueta <iframe> en el array resultados
@@ -156,6 +160,7 @@ const getIframe = async (url, resultados) => {
     console.error("Error obteniendo el iframe:", error.message);
   }
 };
+
 
 
 
