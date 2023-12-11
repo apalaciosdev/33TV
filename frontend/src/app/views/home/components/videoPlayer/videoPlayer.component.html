@@ -1,16 +1,28 @@
+<!-- videoPlayer.component.html -->
+
 <div class="wallpaper" [style.background-image]="'url(' + info.wallpaper + ')'" *ngIf="info.wallpaper">
   <p class="top-left">{{info.title}} - {{info.date}}</p>
   <p class="bottom-left">{{info.overview}}</p>
 </div>
 
 
-<div>
-  <div *ngFor="let safeHtml of safeHtmlArray; let i = index">
-    <div [innerHTML]="safeHtml" id="iframeContainer{{i}}"></div>
-  </div>
+
+<!-- Mostrar los botones siempre -->
+<div class="buttons">
+  <button 
+    *ngFor="let iframe of safeHtmlArray; let i = index" 
+    (click)="selectIframe(i)"
+    [ngStyle]="{'background-color': pressedButtonIndex === i ? '#084d5d' : ''}"
+  >
+    Opción {{i + 1}}
+  </button>
 </div>
 
 <div *ngIf="data?.length === 0">
   <h3>No hay enlaces disponibles.</h3>
 </div>
 
+<div *ngIf="selectedIframe !== null" class="reproducers">
+  <!-- Mostrar el iframe seleccionado -->
+  <div [innerHTML]="safeHtmlArray[selectedIframe]" id="iframeContainer{{selectedIframe}}" class="iframeReproducer"></div>
+</div>

@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
+iframe {
+  width: 10px !important;
+}
 
-
+.reproducers .iframeReproducer {
+  display: flex;
+}
 
 p {
   color: white;
@@ -37,3 +42,21 @@ h3 {
   left: 0;
   margin: 10px; /* Ajusta el margen según tus necesidades */
 }
+
+.buttons {
+  
+  gap: 15px;
+
+  button {
+    background: #0C8CAE;
+    border: 1px solid #0C8CAE;
+    color: #fff;
+    padding: 0.5em;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+}
+
+
