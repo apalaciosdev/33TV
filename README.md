@@ -9,7 +9,7 @@ First of all, download this repo.
 
 After, install nodeJS: https://nodejs.org/en/download
 
-After, start the services executing **start33TV.bat**
+Finally, start the services executing **start33TV.bat**
 
 
 ## Advertisment
