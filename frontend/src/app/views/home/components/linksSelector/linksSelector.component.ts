@@ -21,9 +21,6 @@ export class LinksSelectorComponent implements OnInit {
   constructor(
     public requestService: RequestService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer,
-    private el: ElementRef,
-    private renderer: Renderer2,
     private router: Router
   ) {}
 

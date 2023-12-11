@@ -8,8 +8,6 @@ import { GiphyService } from './shared/services/giphy.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'LALIGA';
-
   constructor(
     public translate: TranslateService,
     public giphy: GiphyService

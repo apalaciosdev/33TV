@@ -11,14 +11,8 @@ export class RequestService {
 
   private ipAddress = ipServerData.ipCableada || ipServerData.ipWifi || 'localhost';
   private baseUrl = `http://${this.ipAddress}:2022/api`; // Reemplaza esto con la URL de tu API
-  // private timeoutDuration = 100000;
 
-  constructor(private http: HttpClient) {this.readAndLogIPs()}
-
-  readAndLogIPs(): void {
-    console.log('IPs from ipServer.json:', ipServerData.ipCableada);
-    // Aquí puedes acceder a las IPs individualmente, por ejemplo: ipServerData.ipCableada, ipServerData.ipWifi
-  }
+  constructor(private http: HttpClient) {}
 
   // Función para realizar una solicitud GET
   get<T>(endpoint: string): Observable<T> {

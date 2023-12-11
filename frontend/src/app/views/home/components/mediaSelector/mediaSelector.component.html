@@ -11,7 +11,6 @@
   
   <div class="columns is-multiline">
     <div class="column is-one-quarter" *ngFor="let media of data">
-      <!-- <div class="card" [routerLink]="['/select-link', media.link, media.dataType]"> -->
       <div class="card" (click)="goTo(media.link, media.dataType)">
         <!-- Contenido de tu tarjeta aquí -->
         <p>{{ media.title }}</p>
