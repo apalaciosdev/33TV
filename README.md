@@ -7,6 +7,8 @@ This is a platform where you can watch all series and movies you want in Spanish
 
 First of all, download this repo.
 
+After, install nodeJS: https://nodejs.org/en/download
+
 After, start the services executing **start33TV.bat**
 
 
