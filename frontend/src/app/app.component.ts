@@ -19,7 +19,6 @@ export class AppComponent {
 
   public async randomGif() {
     console.log(await this.giphy.getRandomGif());
-
   }
 
 }

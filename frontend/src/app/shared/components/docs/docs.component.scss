@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import "../../../../assets/css/variables.scss";
+
+
+.docs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  .info{
+    background-color: white;
+    width: fit-content;
+    padding: 2em;
+    border-radius: 10%
+  };
+  
+}
+
+
+p {
+  color: #141414;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #141414;
+  margin: 0 0 1.5rem;
+}
