@@ -10,6 +10,7 @@ Afterward, install Node.js: [Download Node.js](https://nodejs.org/en/download)
 (Minimum required version: Node v18.16.0)
 
 Finally, start the services by executing **start33TV.bat** and open **localhost:4200** in your web browser.
+<br>
 Note: If a message requesting the acceptance of Google's Privacy Policy usage data appears in the command prompt, please press 'N'.
 
 ## Connect from Other Devices
