@@ -16,6 +16,7 @@ Note: If a message requesting the acceptance of Google's Privacy Policy usage da
 ## Connect from Other Devices
 
 You can connect from other devices that are on the same connected network. 
+<br>
 If you go to **docs** (located in the top menu), you can find instructions on how to do so.
 
 ## Advertisement
