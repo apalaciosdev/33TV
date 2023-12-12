@@ -19,7 +19,7 @@ Puedes conectarte desde otros dispositivos que estén en la misma red conectada.
 <br>
 Si vas a **docs** (ubicado en el menú superior), encontrarás instrucciones sobre cómo hacerlo.
 
-## Publicidad
+## Disclaimer
 
 33TV es un proyecto personal. No alojamos ningún material audiovisual; simplemente proporcionamos información útil sobre películas/series/documentales.
 
@@ -50,7 +50,7 @@ You can connect from other devices that are on the same connected network.
 <br>
 If you go to **docs** (located in the top menu), you can find instructions on how to do so.
 
-## Advertisement
+## Disclaimer
 
 33TV is a personal project. We do not host any audiovisual material; we simply provide useful information about movies/series/documentaries.
 
