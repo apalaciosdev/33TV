@@ -11,33 +11,54 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
-}
 
-h2 {
-  color: white;
-  cursor: pointer;
-}
+  h2 {
+    color: white;
+    cursor: pointer;
+  }
 
-.episode-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
+  .episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 10px;
 
-.episode-item {
- 
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
 
-.episode-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+    .episode-item {
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
 
-.episode-image {
-  max-width: 100%;
-  height: auto;
+      .episode-title {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        font-weight: bold;
+        margin-bottom: 10px;
+
+        p {
+          font-size: 20px;
+        }
+
+        .numerando {
+          margin-top: auto; 
+          font-size: 14px;
+        }
+      }
+      
+      .episode-image {
+        width: 50%;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
 }
