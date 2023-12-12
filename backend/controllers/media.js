@@ -167,7 +167,7 @@ const getIframe = async (url, resultados) => {
 
     if (!sandboxAttribute) {
       // Si no existe, agregar el atributo sandbox con los valores especificados
-      $iframeTag.attr('sandbox', 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation');
+      $iframeTag.attr('sandbox', 'allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allowfullscreen');
     }
 
     // Quitar los atributos width y height
@@ -179,7 +179,6 @@ const getIframe = async (url, resultados) => {
     $iframeTag.removeAttr('marginwidth');
     $iframeTag.removeAttr('marginheight');
     $iframeTag.removeAttr('scrolling');
-    $iframeTag.removeAttr('allowfullscreen');
 
     // Agregar el atributo style con los estilos especificados
     $iframeTag.attr('style', 'width: 95%; height: 95%; position: absolute; top: 0; left: 0; bottom: 0; right: 0;');
