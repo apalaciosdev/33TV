@@ -1,9 +1,38 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Inicializar las variables
-set "ipCableada="
-set "ipWifi="
+REM Configura la URL del repositorio
+set "repoURL=https://github.com/apalaciosdev/33TV.git"
+
+REM Comprobar si Git está instalado
+git --version > nul 2>&1
+if %errorlevel% neq 0 (
+    echo Git no está instalado. Por favor, instala Git y vuelve a ejecutar el script.
+    pause
+    exit /b
+)
+
+REM Comprobar si existe un repositorio Git en el directorio actual
+if not exist ".git" (
+    echo No se encontró un repositorio Git en este directorio. Inicializando un nuevo repositorio...
+    git init
+    git remote add origin %repoURL%
+) else (
+    echo Repositorio Git encontrado en este directorio.
+)
+
+REM Forzar la actualización del repositorio desde la URL remota, sobrescribiendo los cambios locales
+echo Actualizando el repositorio desde %repoURL%...
+git fetch --all
+git reset --hard origin/main
+
+REM Inicializar y actualizar los submódulos Git si los hay
+git submodule init
+git submodule update --recursive
+
+REM Guardar los cambios locales
+git add .
+git commit -m "Actualización automática desde el repositorio remoto"
 
 REM Obtener la dirección IP de las tarjetas de red cableada
 for /f "tokens=1,* delims=:" %%a in ('ipconfig ^| findstr /i "IPv4"') do (
@@ -97,4 +126,3 @@ if not exist "node_modules" (
     echo node_modules encontrado, no es necesario ejecutar npm install.
     start npm run start
 )
- 
