@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, Renderer2, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppSettings } from 'src/app/app.settings';
 import { RequestService } from 'src/app/shared/services/request.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -15,6 +15,7 @@ export class VideoPlayerComponent implements OnInit {
   public link: string = '';
   public dataType: string = '';
   public info: any = {};
+  public navigationLinks: any = {};
   safeHtmlArray: SafeHtml[] = [];
   public selectedIframe: number | null = null;
   openSeasons: { [key: string]: boolean } = {};
@@ -26,7 +27,7 @@ export class VideoPlayerComponent implements OnInit {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private el: ElementRef,
-    private location: Location
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -54,41 +55,47 @@ export class VideoPlayerComponent implements OnInit {
     this.dataType = 'movie';
 
     this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link }).subscribe((res) => {
-      this.data = res;
+      this.data = res.resultados;
+      this.info = res.info;
+      this.navigationLinks = res.navigationLinks;
       this.safeHtmlArray = this.data.map((htmlString, index) => {
         const sanitizedHtmlString = htmlString.replace(/\\/g, '');
         this.setupIframeCommunication(index);
         return this.sanitizer.bypassSecurityTrustHtml(sanitizedHtmlString);
       });
-
-      this.info.wallpaper = res.wallpaper;
-      this.info.overview = res.overview;
-      this.info.date = res.date;
-      this.info.title = res.title;
     });
   }
-
-  selectIframe(index: number) {
-    this.pressedButtonIndex = index;
-
-    if (this.selectedIframe === index) {
-      this.closeIframe(this.selectedIframe);
+  deselectIframe() {
+    if (this.pressedButtonIndex !== null) {
       this.selectedIframe = null;
-    } else {
-      if (this.selectedIframe !== null) {
-        this.closeIframe(this.selectedIframe);
-      }
-      this.selectedIframe = index;
-      this.openIframe(this.selectedIframe);
+      this.pressedButtonIndex = null;
     }
   }
 
-  private openIframe(index: number) {
-    // Puedes agregar lógica adicional si es necesario antes de abrir el iframe
+  selectIframe(index: number) {
+    this.deselectIframe();
+    this.pressedButtonIndex = index;
+
+    if (this.selectedIframe === index) {
+      this.selectedIframe = null;
+    } else {
+      this.selectedIframe = index;
+    }
   }
 
-  private closeIframe(index: number) {
-    // Puedes agregar lógica adicional si es necesario antes de cerrar el iframe
+  public async goToEpisode(option: string) {
+    this.deselectIframe();
+    if (option === 'next'){
+      this.link = this.navigationLinks.siguiente;
+    }
+    if (option === 'seasons'){
+      this.router.navigate(['/select-link', this.navigationLinks.seasons], { queryParams: {query: this.navigationLinks.seasons} })
+    }
+    if (option === 'previous'){
+      this.link = this.navigationLinks.anterior;
+    }
+
+    await this.getMediaLinks();
   }
 
   private setupIframeCommunication(index: number) {

@@ -1,3 +1,34 @@
+# Bienvenido a 33TV!
+
+Esta es una plataforma donde puedes ver todas las series y películas que desees en español (España).
+
+## Cómo Configurar
+
+En primer lugar, descarga este repositorio.
+
+Después, instala Node.js: [Descargar Node.js](https://nodejs.org/en/download)  
+(Versión mínima requerida: Node v18.16.0)
+
+Finalmente, inicia los servicios ejecutando **start33TV.bat** y abre **localhost:4200** en tu navegador web.
+<br>
+Nota: Si aparece un mensaje solicitando la aceptación de los datos de uso de la Política de privacidad de Google en la línea de comandos, por favor presiona 'N'.
+
+## Conectar desde Otros Dispositivos
+
+Puedes conectarte desde otros dispositivos que estén en la misma red conectada. 
+<br>
+Si vas a **docs** (ubicado en el menú superior), encontrarás instrucciones sobre cómo hacerlo.
+
+## Publicidad
+
+33TV es un proyecto personal. No alojamos ningún material audiovisual; simplemente proporcionamos información útil sobre películas/series/documentales.
+
+Su distribución está prohibida. Se utiliza con fines educativos para demostrar los peligros del web scraping.
+
+
+
+<br><br><br>
+
 # Welcome to 33TV!
 
 This is a platform where you can watch all the series and movies you want in Spanish (Spain).
