@@ -5,32 +5,50 @@ REM Inicializar las variables
 set "ipCableada="
 set "ipWifi="
 
-REM Obtener la dirección IP de la tarjeta de red cableada
-for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "IPv4 Address"') do (
-    set "ipCableada=%%a"
-)
-
-REM Si no se encontró la dirección IP de la tarjeta de red cableada, intentar obtener la de la tarjeta de red inalámbrica
-if not defined ipCableada (
-    for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "Wireless LAN adapter"') do (
-        set "ipWifi=%%a"
+REM Obtener la dirección IP de las tarjetas de red cableada
+for /f "tokens=1,* delims=:" %%a in ('ipconfig ^| findstr /i "IPv4"') do (
+    set "ip=!ipCableada!"
+    set "ipCableada=%%b"
+    
+    REM Eliminar espacios en blanco al principio y al final de las direcciones IP
+    set "ip=!ip: =!"
+    
+    REM Verificar si la IP de la interfaz actual comienza con "192.168"
+    set "ipStart=!ip:~0,7!"
+    if "!ipStart!"=="192.168" (
+        set "ipCableadaValid=!ip!"
+    ) else (
+        set "ipCableadaValid="
+    )
+    
+    if defined ipCableadaValid (
+        REM Salir del bucle si se encontró una interfaz válida
+        goto :CheckWifi
     )
 )
 
-REM Si ninguna dirección IP fue encontrada, salir sin hacer cambios
-if not defined ipCableada if not defined ipWifi (
-    echo No se encontró ninguna dirección IP.
-    pause
-    exit /b
+:CheckWifi
+
+REM Obtener la dirección IP de las tarjetas de red inalámbrica (wifi)
+set "ipWifi="
+for /f "tokens=2 delims=:" %%a in ('netsh interface ip show addresses ^| findstr /i "Dirección IP"') do (
+    set "ip=%%a"
+    
+    REM Eliminar espacios en blanco al principio y al final de las direcciones IP
+    set "ip=!ip: =!"
+    
+    REM Verificar si la IP de la interfaz wifi comienza con "192.168"
+    set "ipStart=!ip:~0,7!"
+    if "!ipStart!"=="192.168" (
+        set "ipWifi=!ip!"
+        goto :WriteJSON
+    )
 )
 
-REM Eliminar espacios en blanco al principio y al final de las direcciones IP
-set "ipCableada=!ipCableada: =!"
-set "ipWifi=!ipWifi: =!"
+:WriteJSON
 
 REM Crear o sobrescribir el archivo JSON con la información obtenida
-echo { "ipCableada": "%ipCableada%", "ipWifi": "%ipWifi%" } > ipServer.json
-
+echo { "ipCableada": "%ipCableadaValid%", "ipWifi": "%ipWifi%" } > ipServer.json
 echo Archivo ipServer.json actualizado con éxito.
 
 REM Identificar y cerrar el proceso en el puerto 2022
@@ -58,7 +76,11 @@ REM Ir al directorio del frontend y ejecutar la comprobación/npm install/start 
 cd ../frontend
 call :CheckNodeModules
 
+REM Esperar 10 segundos antes de abrir la pestaña del navegador
+timeout /t 10
 
+REM Abrir la pestaña del navegador con la URL del frontend
+start http://localhost:4200
 
 REM Pausa para mantener la consola abierta
 exit /b

@@ -8,6 +8,7 @@
 - Volver a la página anterior desde el reproductor.
 - Añadidos título y descripción del episodio o película.
 - Estilizado de la página del reproductor.
+- Actualizacion script `start33TV.bat`. Ahora detecta nuevas actualizaciones y las instala automáticamente.
 
 
 # New Features
@@ -20,3 +21,4 @@
 - Go back to the previous page from the player.
 - Title and description of the episode or movie added.
 - Styling of the player page.
+- Update `start33TV.bat` script. It now detects new updates and installs them automatically.

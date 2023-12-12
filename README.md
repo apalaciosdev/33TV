@@ -2,12 +2,14 @@
 
 Esta es una plataforma donde puedes ver todas las series y películas que desees en español (España).
 
-## Cómo Configurar
+## CÓMO INSTALAR
 
 En primer lugar, descarga este repositorio.
 
 Después, instala Node.js: [Descargar Node.js](https://nodejs.org/en/download)  
 (Versión mínima requerida: Node v18.16.0)
+
+Antes de acabar, instala GIT:  [Descargar GIT](https://git-scm.com/downloads).
 
 Finalmente, inicia los servicios ejecutando **start33TV.bat** y abre **localhost:4200** en tu navegador web.
 <br>
@@ -39,6 +41,8 @@ First of all, download this repository.
 
 Afterward, install Node.js: [Download Node.js](https://nodejs.org/en/download)  
 (Minimum required version: Node v18.16.0)
+
+Before finishing, install GIT:  [Descargar GIT](https://git-scm.com/downloads).
 
 Finally, start the services by executing **start33TV.bat** and open **localhost:4200** in your web browser.
 <br>
