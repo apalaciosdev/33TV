@@ -9,7 +9,8 @@
 - Añadidos título y descripción del episodio o película.
 - Estilizado de la página del reproductor.
 - Actualizacion script `start33TV.bat`. Ahora detecta nuevas actualizaciones y las instala automáticamente.
-
+- Fix al poner un iframe a pantalla completa.
+- Estilizado básico de la pantalla de selección de un episodio en una serie con temporadas.
 
 # New Features
 
@@ -22,3 +23,5 @@
 - Title and description of the episode or movie added.
 - Styling of the player page.
 - Update `start33TV.bat` script. It now detects new updates and installs them automatically.
+- Fix when putting an iframe in fullscreen mode.
+- Basic styling of the episode selection screen in a series with seasons.
