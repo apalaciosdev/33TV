@@ -114,6 +114,28 @@ const getReproducers = async (req, res = response) => {
 
     const $ = cheerio.load(response.data);
 
+
+    // Obtener información de la sección 'info'
+    const infoSection = $('#info');
+
+    // Extraer el título (h1) y la descripción (p)
+    const title = infoSection.find('h1').text().trim();
+    const description = infoSection.find('.wp-content p').text().trim();
+
+
+
+    const navEpDiv = $('.navEP');
+    const navigationLinks = {};
+
+    const anteriorLink = navEpDiv.find('a:contains("Anterior")').attr('href');
+    const seasonsLink = navEpDiv.find('a:contains("temporadas")').attr('href');
+    const siguienteLink = navEpDiv.find('a:contains("Siguiente")').attr('href');
+
+    navigationLinks.anterior = anteriorLink ? anteriorLink : null;
+    navigationLinks.seasons = seasonsLink ? seasonsLink : null;
+    navigationLinks.siguiente = siguienteLink ? siguienteLink : null;
+
+
     // Utiliza un bucle asíncrono
     for (const element of $('.playerItem[data-lang="esp"]').toArray()) {
       const dataLoadPlayer = $(element).attr('data-loadplayer');
@@ -123,7 +145,7 @@ const getReproducers = async (req, res = response) => {
       }
     }
 
-    return res.status(200).json(resultados);
+    return res.status(200).json({resultados, info: { title, description }, navigationLinks});
 
   } catch (error) {
     console.error("Error:", error.message);
@@ -152,6 +174,16 @@ const getIframe = async (url, resultados) => {
     $iframeTag.removeAttr('width');
     $iframeTag.removeAttr('height');
 
+    // Quitar los atributos adicionales
+    $iframeTag.removeAttr('frameborder');
+    $iframeTag.removeAttr('marginwidth');
+    $iframeTag.removeAttr('marginheight');
+    $iframeTag.removeAttr('scrolling');
+    $iframeTag.removeAttr('allowfullscreen');
+
+    // Agregar el atributo style con los estilos especificados
+    $iframeTag.attr('style', 'width: 95%; height: 95%; position: absolute; top: 0; left: 0; bottom: 0; right: 0;');
+
     const iframeTag = $iframeTag.toString();
 
     // Ahora, puedes procesar o almacenar la etiqueta <iframe> en el array resultados
@@ -160,6 +192,7 @@ const getIframe = async (url, resultados) => {
     console.error("Error obteniendo el iframe:", error.message);
   }
 };
+
 
 
 
