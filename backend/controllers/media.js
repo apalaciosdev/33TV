@@ -152,6 +152,16 @@ const getIframe = async (url, resultados) => {
     $iframeTag.removeAttr('width');
     $iframeTag.removeAttr('height');
 
+    // Quitar los atributos adicionales
+    $iframeTag.removeAttr('frameborder');
+    $iframeTag.removeAttr('marginwidth');
+    $iframeTag.removeAttr('marginheight');
+    $iframeTag.removeAttr('scrolling');
+    $iframeTag.removeAttr('allowfullscreen');
+
+    // Agregar el atributo style con los estilos especificados
+    $iframeTag.attr('style', 'width: 95%; height: 95%; position: absolute; top: 0; left: 0; bottom: 0; right: 0;');
+
     const iframeTag = $iframeTag.toString();
 
     // Ahora, puedes procesar o almacenar la etiqueta <iframe> en el array resultados
@@ -160,6 +170,7 @@ const getIframe = async (url, resultados) => {
     console.error("Error obteniendo el iframe:", error.message);
   }
 };
+
 
 
 
