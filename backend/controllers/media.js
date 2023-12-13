@@ -218,19 +218,21 @@ const getMultiMediaPage = async (req, res = response) => {
       const $element = $(element);
 
       // Extraer información
-      const href = $element.find("a").attr("href");
-      const imgSrc = $element.find("img").attr("src");
-      const fecha = $element.find(".data p").text();
-      const titulo = $element.find(".data h3").text();
-      const genero = $element.find(".data span").text();
+      const link = $element.find("a").attr("href");
+      const image = $element.find("img").attr("src");
+      const date = $element.find(".data p").text();
+      const title = $element.find(".data h3").text();
+      const genre = $element.find(".data span").text();
+      const dataType = $element.find(".poster-mark").attr("data-type");
 
       // Crear objeto y agregar al array
       const pelicula = {
-        href,
-        imgSrc,
-        fecha,
-        titulo,
-        genero,
+        link,
+        image,
+        date,
+        title,
+        genre,
+        dataType
       };
       resultados.push(pelicula);
     });

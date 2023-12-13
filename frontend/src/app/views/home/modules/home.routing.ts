@@ -8,6 +8,7 @@ import { LinksSelectorComponent } from '../components/linksSelector/linksSelecto
 import { VideoPlayerComponent } from '../components/videoPlayer/videoPlayer.component';
 import { MediaSelectorComponent } from '../components/mediaSelector/mediaSelector.component';
 import { DocsComponent } from 'src/app/shared/components/docs/docs.component';
+import { DiscoverComponent } from '../components/findNewMedia/discover.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'select-link/:link', component: LinksSelectorComponent},
   {path: 'player', component: VideoPlayerComponent},
   {path: 'docs', component: DocsComponent},
+  {path: 'discover/:type/:page', component: DiscoverComponent},
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

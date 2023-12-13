@@ -9,6 +9,7 @@ import { HomeComponent } from '../components/home.component';
 import { LinksSelectorComponent } from '../components/linksSelector/linksSelector.component';
 import { VideoPlayerComponent } from '../components/videoPlayer/videoPlayer.component';
 import { MediaSelectorComponent } from '../components/mediaSelector/mediaSelector.component';
+import { DiscoverComponent } from '../components/findNewMedia/discover.component';
 
 
 
@@ -25,13 +26,15 @@ import { MediaSelectorComponent } from '../components/mediaSelector/mediaSelecto
     HomeComponent,
     LinksSelectorComponent,
     VideoPlayerComponent,
-    MediaSelectorComponent
+    MediaSelectorComponent,
+    DiscoverComponent
   ],
   declarations: [
     HomeComponent,
     LinksSelectorComponent,
     VideoPlayerComponent,
-    MediaSelectorComponent
+    MediaSelectorComponent,
+    DiscoverComponent
   ]
 })
 export class HomeModule { }

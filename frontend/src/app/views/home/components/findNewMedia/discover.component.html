@@ -1,0 +1,32 @@
+<div class="content app-home">
+  <h1 *ngIf="type === 'peliculas'">Películas</h1>
+  <h1 *ngIf="type === 'series'">Series</h1>
+  <h1 *ngIf="type === 'animes'">Animes</h1>
+
+  <div class="linkButtons" *ngIf="data.length > 0">
+    <button (click)="goToPage('previous')" [disabled]="page <= 1">Anterior</button>
+    <button (click)="goToPage('next')">Siguiente</button>
+  </div>
+  <div class="columns is-multiline">
+    <div class="column is-one-quarter" *ngFor="let media of data">
+      <div class="card" (click)="goTo(media.link, media.dataType)">
+        <!-- Contenido de tu tarjeta aquí -->
+        <p>{{ media.title }}</p>
+        <!-- <a>{{ media.dataType }}</a> -->
+        <img src="{{ media.image }}" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="linkButtons" *ngIf="data.length > 0">
+    <button (click)="goToPage('previous')" [disabled]="page <= 1">Anterior</button>
+    <button (click)="goToPage('next')">Siguiente</button>
+  </div>
+
+  <div *ngIf="data?.length === 0">
+    <h3>¡Vaya!, no hay nada en el catálogo.</h3>
+  </div>
+  
+
+</div>
+

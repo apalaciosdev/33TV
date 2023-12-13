@@ -10,6 +10,7 @@ export class AppSettings {
   //POST
   public static API_GET_REPRODUCERS = '/media/getReproducers';
   public static API_GET_EPISODES = '/media/getEpisodes';
+  public static API_GET_MULTI_MEDIA_PAGE = '/media/getMultiMediaPage';
   
 
   // APIs Modalitats
