@@ -14,6 +14,7 @@
 
 ### **Versión 1.0.3 (13 Dic. 2023)**
 - Navbar actualizado.
+- Nuevas páginas `Pelis` y `Series` añadidas.
 
 # New Features
 
@@ -31,3 +32,4 @@
 
 ### Version 1.0.2 (13 Dec. 2023)
 - Navbar updated.
+- New pages for Movies and TV Shows added.
