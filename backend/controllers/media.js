@@ -194,27 +194,54 @@ const getIframe = async (url, resultados) => {
 
 
 
-
-
-
-async function extraerIframesCompleto(url) {
+const getMultiMediaPage = async (req, res = response) => {
   try {
-      const response = await axios.get(url);
-      const $ = cheerio.load(response.data);
-      const iframes = [];
+    // type -> 'peliculas' || 'series' || 'animes' 
+    const { query, type } = req.body; // page number
+    const resultados = [];
+    const url = "https://playdede.us/" + type + "/" + query || '';
 
-      $('iframe').each((index, element) => {
-          // Obtener la etiqueta completa del iframe como una cadena
-          const iframeString = $.html(element);
-          iframes.push(iframeString);
-      });
+    const response = await axios.get(url, {
+      headers: {
+        Cookie:
+          "_ga_D9G0K8CJ8D=GS1.1.1701859968.15.1.1701859985.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=iZgjGHx2.hTnEBgFMSBWPmrDwhw3ElV5uNXpofgloHs-1701855916-0-1-6ac52d8.930039bf.d62ee2aa-0.2.1701855916; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=c3827bcdc92a2af8f99abc5129b7fd1f",
+        Host: "playdede.us",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+      },
+    });
 
-      return iframes;
+    const $ = cheerio.load(response.data);
+
+    // Seleccionar los elementos article dentro del div con id 'archive-content'
+    $("article.item.tvshows").each((index, element) => {
+      const $element = $(element);
+
+      // Extraer información
+      const href = $element.find("a").attr("href");
+      const imgSrc = $element.find("img").attr("src");
+      const fecha = $element.find(".data p").text();
+      const titulo = $element.find(".data h3").text();
+      const genero = $element.find(".data span").text();
+
+      // Crear objeto y agregar al array
+      const pelicula = {
+        href,
+        imgSrc,
+        fecha,
+        titulo,
+        genero,
+      };
+      resultados.push(pelicula);
+    });
+
+    return res.status(200).json(resultados);
   } catch (error) {
-      console.error(`Error al obtener ${url}: ${error.message}`);
-      return [];
+    console.error("Error:", error.message);
+    return res.status(500).json({ error: error.message });
   }
-}
+};
+
 
 
 const getTest = async(req, res = response ) => {
@@ -226,5 +253,6 @@ module.exports = {
   searchMedia,
   getEpisodes,
   getReproducers,
+  getMultiMediaPage,
   getTest
 }
