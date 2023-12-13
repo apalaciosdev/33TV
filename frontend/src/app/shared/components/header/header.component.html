@@ -1,41 +1,56 @@
-<nav class="navbar is-fixed-top is-dark">
+<nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <!-- 33TV -->
       <img src="../../../../assets/img/logo.webp" width="90" height="28">
     </a>
-    <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/docs">
-        Docs
-      </a>
-      <div class="navbar-dropdown is-boxed">
-        <a class="navbar-item is-active" href="/docs">
-          Conectarse desde otro dispositivo
-        </a>
-      </div>
-    </div> 
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
- 
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
+
+  <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <!-- <a class="navbar-item" href="https://bulma.io/">
+      <a class="navbar-item" href="/">
         Home
-      </a>-->
-    </div>
-    
-    
-    
-    <div class="navbar-end">
-      <!-- <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/docs">
+      </a>
+
+      <a class="navbar-item">
+        Pelis
+      </a>
+      <a class="navbar-item">
+        Series
+      </a>
+      <a class="navbar-item">
+        Animación
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
           Docs
         </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item is-active" href="/docs">
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/docs">
             Conectarse desde otro dispositivo
           </a>
+          <!-- <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a> -->
         </div>
-      </div>  -->
+      </div>
+    </div>
+
+    <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped"> 
             <div  class="flex-form">
@@ -50,7 +65,6 @@
     </div>
   </div>
 </nav>
-
 
 
 
