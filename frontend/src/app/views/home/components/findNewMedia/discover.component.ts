@@ -13,6 +13,7 @@ export class DiscoverComponent implements OnInit {
   public data: any[] = [];
   type: string = '';
   page: number = 0;
+  filter: string = '';
   lastQuery: string = '';
 
   constructor(
@@ -25,21 +26,21 @@ export class DiscoverComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.type = params['type'];
       this.page = params['page'];
+      this.filter = params['filter'];
       this.searchMedia();
     });
 
     this.router.events
     .pipe(filter((event) => event instanceof NavigationEnd))
     .subscribe(() => {
-      window.scrollTo(0, 0); // Desplazarse al inicio de la página
+      window.scrollTo(0, 0);
     });
   }
 
   public searchMedia() {
-    this.requestService.post<any>(AppSettings.API_GET_MULTI_MEDIA_PAGE, {type: this.type, query: this.page}).subscribe((res) => {
+    this.requestService.post<any>(AppSettings.API_GET_MULTI_MEDIA_PAGE, {type: this.type, query: this.page, filter: this.filter}).subscribe((res) => {
       this.data = res;
     });
-    // this.lastQuery = this.query;
   }
 
   public async goToPage(type: string) {
@@ -51,9 +52,16 @@ export class DiscoverComponent implements OnInit {
     }
     this.router.navigate(['/discover/' + this.type + "/" + this.page]);
   }
+
+  public async goToFilter(type: string) {
+    this.filter = type;
+    this.page = 1;
+    this.router.navigate(['/discover/' + this.type + "/" + this.page + "/" + this.filter]);
+  }
+
+
  
   public goTo(link: string, dataType: string) {
-    console.log(link, dataType)
     if (dataType === 'movie') {
       this.router.navigate(['/player'], { queryParams: {query: link} })
     } else {

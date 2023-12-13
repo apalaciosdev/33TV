@@ -3,6 +3,12 @@
   <h1 *ngIf="type === 'series'">Series</h1>
   <h1 *ngIf="type === 'animes'">Animes</h1>
 
+  <div class="filterButtons" *ngIf="data.length > 0">
+    <button (click)="goToFilter('item_date')" [ngStyle]="{'background-color': filter === 'item_date' ? '#084d5d' : ''}">Nuevo</button>
+    <button (click)="goToFilter('now_playing')" [ngStyle]="{'background-color': filter === 'now_playing' ? '#084d5d' : ''}">En cartelera</button>
+    <button (click)="goToFilter('popular')" [ngStyle]="{'background-color': filter === 'popular' ? '#084d5d' : ''}">Popular</button>
+  </div>
+
   <div class="linkButtons" *ngIf="data.length > 0">
     <button (click)="goToPage('previous')" [disabled]="page <= 1">Anterior</button>
     <button (click)="goToPage('next')">Siguiente</button>

@@ -25,6 +25,25 @@ img {
   }
 }
 
+.filterButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1em;
+  flex-direction: row;
+  width: 100%;
+
+  button {
+    color: white;
+    border: 1px solid #0C8CAE;
+    background: none;
+    padding: 0.5em;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+}
+
 p {
   position: absolute;
   bottom: 0;
