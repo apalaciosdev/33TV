@@ -197,11 +197,11 @@ const getIframe = async (url, resultados) => {
 const getMultiMediaPage = async (req, res = response) => {
   try {
     // type -> 'peliculas' || 'series' || 'animes' 
-    // filter -> 'item_date || 'now_playing' || 'popular'
+    // filter -> 'last_update' || 'item_date || 'now_playing' || 'popular'
     const { query, type, filter } = req.body; // page number
     const resultados = [];
     const url = "https://playdede.us/" + type + "/" + (query || '') + (filter ?  "?orderBy=" + (filter) : '');
-    console.log(url)
+  
     const response = await axios.get(url, {
       headers: {
         Cookie:

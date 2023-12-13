@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'select-link/:link', component: LinksSelectorComponent},
   {path: 'player', component: VideoPlayerComponent},
   {path: 'docs', component: DocsComponent},
-  {path: 'discover/:type/:page', component: DiscoverComponent},
+  {path: 'discover/:type/:page/:filter', component: DiscoverComponent},
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
