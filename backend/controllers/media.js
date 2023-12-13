@@ -119,9 +119,15 @@ const getReproducers = async (req, res = response) => {
     const infoSection = $('#info');
 
     // Extraer el título (h1) y la descripción (p)
-    const title = infoSection.find('h1').text().trim();
-    const description = infoSection.find('.wp-content p').text().trim();
+    let title = infoSection.find('h1').text().trim();
+    let description = infoSection.find('.wp-content p').text().trim();
 
+
+    if (title === '' && description === ''){
+      // Extraer el título (h1) y la descripción (p)
+      title = $('.data h1').text().trim(); // Busca h1 dentro de .data
+      description = $('.overview p').text().trim(); // Busca p dentro de .overview
+    }
 
 
     const navEpDiv = $('.navEP');
