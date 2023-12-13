@@ -50,7 +50,7 @@ export class DiscoverComponent implements OnInit {
     if (type === 'next'){
       this.page ++;
     }
-    this.router.navigate(['/discover/' + this.type + "/" + this.page]);
+    this.router.navigate(['/discover/' + this.type + "/" + this.page + "/" + this.filter]);
   }
 
   public async goToFilter(type: string) {
