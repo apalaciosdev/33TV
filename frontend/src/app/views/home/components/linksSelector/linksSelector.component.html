@@ -1,3 +1,8 @@
+<div class="wallpaper" [style.background-image]="'url(' + info.wallpaper + ')'" *ngIf="info.title">
+  <h2 class="top-left">{{info.title}}</h2>
+  <p class="bottom-left">{{info.description}}</p>
+</div>
+
 <div class="tv-show-container">
   <div *ngFor="let season of data; let i = index" class="season-container">
     <h2 (click)="toggleSeason(i)">

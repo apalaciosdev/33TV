@@ -60,6 +60,25 @@ const getEpisodes = async (req, res = response) => {
 
     const $ = cheerio.load(response.data);
 
+    // Obtener datos del div con clase "wallpaper" dentro de "content"
+    const wallpaperDiv = $(".wallpaper");
+    const wallpaperStyle = wallpaperDiv.attr("style");
+    const wallpaperUrl = wallpaperStyle ? wallpaperStyle.match(/url\((.*?)\)/)[1] : null;
+    
+    const dataDiv = $(".data");
+    const dataTitle = dataDiv.find("h1").text();
+    
+    const dataDescriptionDiv = $(".overview");
+    const dataDescription = dataDescriptionDiv.find("p").text();
+
+
+    const info = {
+      wallpaper: wallpaperUrl,
+      title: dataTitle,
+      description: dataDescription
+    }
+
+
     // Seleccionar el div con id "seasons"
     const seasonsDiv = $("#seasons");
 
@@ -88,7 +107,7 @@ const getEpisodes = async (req, res = response) => {
       data.push(season);
     });
 
-    return res.status(200).json(data);
+    return res.status(200).json({data, info});
   } catch (error) {
     console.error("Error:", error.message);
     return res.status(500).json({ error: error.message });
