@@ -7,6 +7,49 @@
   color: white;
 }
 
+
+p {
+  color: white;
+ 
+  // padding: 6px;
+}
+
+h2 {
+  color: white;
+}
+
+
+.wallpaper {
+  height: 30vh;
+  background-size: cover; /* La imagen se escala para cubrir completamente el contenedor sin deformarse */
+  background-position: center; /* Centra la imagen de fondo en el contenedor */
+  margin: -2em -3em -1em -3em !important;
+  position: relative;
+  margin-bottom: 2em !important;
+  // width: 100%;
+  // height: 300px; /* Ajusta la altura según tus necesidades */
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px; /* Ajusta el margen según tus necesidades */
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px; /* Ajusta el margen según tus necesidades */
+  background-color: rgba(0, 0, 0, 0.425);
+}
+
+.info {
+  margin-bottom: 4em;
+}
+
 .season-container {
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;

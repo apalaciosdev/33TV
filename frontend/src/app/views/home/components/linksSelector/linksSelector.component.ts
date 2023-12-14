@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LinksSelectorComponent implements OnInit {
   public data: any[] = [];
+  public info: any = {};
   public type: string = '';
   public link: string = '';
   safeHtmlArray: SafeHtml[] = [];
@@ -45,7 +46,8 @@ export class LinksSelectorComponent implements OnInit {
     this.link = serieLink ? AppSettings.GENERAL + '/' + serieLink : this.link;
     
     this.requestService.post<any>(AppSettings.API_GET_EPISODES, { query: this.link }).subscribe((res) => {
-      this.data = res;
+      this.data = res.data;
+      this.info = res.info;
     });
   }
 
