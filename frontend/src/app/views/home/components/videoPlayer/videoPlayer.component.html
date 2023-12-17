@@ -4,6 +4,11 @@
 </div>
 
 <div class="linkButtons" *ngIf="navigationLinks?.seasons">
+  <button (click)="setLanguage('esp')" [ngStyle]="{'background-color': language === 'esp' ? '#084d5d' : ''}">CASTELLANO</button>
+  <button (click)="setLanguage('lat')" [ngStyle]="{'background-color': language === 'lat' ? '#084d5d' : ''}">LATINO</button>
+</div>
+
+<div class="linkButtons" *ngIf="navigationLinks?.seasons">
   <button (click)="goToEpisode('previous')" [disabled]="!navigationLinks?.anterior">Anterior</button>
   <button (click)="goToEpisode('seasons')" [disabled]="!navigationLinks?.seasons">Temporadas</button>
   <button (click)="goToEpisode('next')" [disabled]="!navigationLinks?.siguiente">Siguiente</button>

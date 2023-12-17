@@ -16,12 +16,15 @@
 - Navbar actualizado.
 - Nuevas páginas `Pelis` y `Series` añadidas.
 
+### **Versión 1.0.4 (17 Dic. 2023)**
+- Idioma Latino añadido.
+
 # New Features
 
-### Version 1.0.1 (11 Dec. 2023)
+### **Version 1.0.1 (11 Dec. 2023)**
 - Added buttons to select a player option.
 
-### Version 1.0.2 (12 Dec. 2023)
+### **Version 1.0.2 (12 Dec. 2023)**
 - Buttons `Previous`, `Seasons`, and `Next` added on the player page.
 - Go back to the previous page from the player.
 - Title and description of the episode or movie added.
@@ -30,6 +33,9 @@
 - Fix when putting an iframe in fullscreen mode.
 - Basic styling of the episode selection screen in a series with seasons.
 
-### Version 1.0.2 (13 Dec. 2023)
+### **Version 1.0.2 (13 Dec. 2023)**
 - Navbar updated.
 - New pages for Movies and TV Shows added.
+
+### **Versión 1.0.4 (17 Dec. 2023)**
+- Latin language added.
