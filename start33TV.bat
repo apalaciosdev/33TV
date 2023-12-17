@@ -34,65 +34,18 @@ REM Guardar los cambios locales
 git add .
 git commit -m "Actualización automática desde el repositorio remoto"
 
-REM Obtener la dirección IP de las tarjetas de red cableada
-for /f "tokens=1,* delims=:" %%a in ('ipconfig ^| findstr /i "IPv4"') do (
-    set "ip=!ipCableada!"
-    set "ipCableada=%%b"
-    
-    REM Eliminar espacios en blanco al principio y al final de las direcciones IP
-    set "ip=!ip: =!"
-    
-    REM Verificar si la IP de la interfaz actual comienza con "192.168"
-    set "ipStart=!ip:~0,7!"
-    if "!ipStart!"=="192.168" (
-        set "ipCableadaValid=!ip!"
-    ) else (
-        set "ipCableadaValid="
-    )
-    
-    if defined ipCableadaValid (
-        REM Salir del bucle si se encontró una interfaz válida
-        goto :CheckWifi
-    )
-)
-
-:CheckWifi
-
-REM Obtener la dirección IP de las tarjetas de red inalámbrica (wifi)
-set "ipWifi="
-for /f "tokens=2 delims=:" %%a in ('netsh interface ip show addresses ^| findstr /i "Dirección IP"') do (
+REM Obtener la primera dirección IPv4
+for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr "IPv4"') do (
     set "ip=%%a"
-    
-    REM Eliminar espacios en blanco al principio y al final de las direcciones IP
     set "ip=!ip: =!"
-    
-    REM Verificar si la IP de la interfaz wifi comienza con "192.168"
-    set "ipStart=!ip:~0,7!"
-    if "!ipStart!"=="192.168" (
-        set "ipWifi=!ip!"
-        goto :WriteJSON
-    )
+    set "ipCableada=%%a"
+    goto :WriteJSON
 )
 
 :WriteJSON
-
 REM Crear o sobrescribir el archivo JSON con la información obtenida
-echo { "ipCableada": "%ipCableadaValid%", "ipWifi": "%ipWifi%" } > ipServer.json
+echo { "ipCableada": "%ipCableada%", "ipWifi": "%ipWifi%" } > ipServer.json
 echo Archivo ipServer.json actualizado con éxito.
-
-REM Identificar y cerrar el proceso en el puerto 2022
-echo Identificando y cerrando el proceso en el puerto 2022...
-for /f "tokens=5" %%a in ('netstat -ano ^| find "2022"') do (
-    echo Cerrando el proceso con PID %%a...
-    taskkill /F /PID %%a
-)
-
-REM Identificar y cerrar el proceso en el puerto 4200
-echo Identificando y cerrando el proceso en el puerto 4200...
-for /f "tokens=5" %%a in ('netstat -ano ^| find "4200"') do (
-    echo Cerrando el proceso con PID %%a...
-    taskkill /F /PID %%a
-)
 
 REM Ir al directorio del backend y ejecutar la comprobación/npm install/start para el backend
 cd backend
