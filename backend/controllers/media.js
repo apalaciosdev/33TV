@@ -117,7 +117,8 @@ const getEpisodes = async (req, res = response) => {
 
 const getReproducers = async (req, res = response) => {
   try {
-    const { query } = req.body;
+    // language  -> 'esp' || 'lat'
+    const { query, language } = req.body;
     const resultados = [];
     const url = "https://playdede.us/" + query;
 
@@ -162,7 +163,7 @@ const getReproducers = async (req, res = response) => {
 
 
     // Utiliza un bucle asíncrono
-    for (const element of $('.playerItem[data-lang="esp"]').toArray()) {
+    for (const element of $(`.playerItem[data-lang=${language}]`).toArray()) {
       const dataLoadPlayer = $(element).attr('data-loadplayer');
       if (dataLoadPlayer) {
         const iframeUrl = `https://playdede.us/embed.php?id=${dataLoadPlayer}&width=431&height=540`;

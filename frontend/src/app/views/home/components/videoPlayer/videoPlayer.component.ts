@@ -16,6 +16,7 @@ export class VideoPlayerComponent implements OnInit {
   public dataType: string = '';
   public info: any = {};
   public navigationLinks: any = {};
+  public language :string = 'esp';
   safeHtmlArray: SafeHtml[] = [];
   public selectedIframe: number | null = null;
   openSeasons: { [key: string]: boolean } = {};
@@ -54,7 +55,7 @@ export class VideoPlayerComponent implements OnInit {
   public async getMediaLinks() {
     this.dataType = 'movie';
 
-    this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link }).subscribe((res) => {
+    this.requestService.post<any>(AppSettings.API_GET_REPRODUCERS, { query: this.link, language: this.language }).subscribe((res) => {
       this.data = res.resultados;
       this.info = res.info;
       this.navigationLinks = res.navigationLinks;
@@ -116,5 +117,11 @@ export class VideoPlayerComponent implements OnInit {
         });
       }
     }
+  }
+
+  public async setLanguage(lang:string) {
+    this.language = lang;
+    this.pressedButtonIndex = null;
+    await this.getMediaLinks();
   }
 }
