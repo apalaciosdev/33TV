@@ -37,14 +37,14 @@ git commit -m "Actualización automática desde el repositorio remoto"
 REM Obtener la primera dirección IPv4
 for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr "IPv4"') do (
     set "ip=%%a"
-    set "ip=!ip: =!"
-    set "ipCableada=%%a"
+    set "ip=!ip: =!"  REM Remove leading spaces
+    set "ipCableadaModified=!ip!"
     goto :WriteJSON
 )
 
 :WriteJSON
 REM Crear o sobrescribir el archivo JSON con la información obtenida
-echo { "ipCableada": "%ipCableada%", "ipWifi": "%ipWifi%" } > ipServer.json
+echo { "ipCableada": "%ipCableadaModified%", "ipWifi": "%ipWifi%" } > ipServer.json
 echo Archivo ipServer.json actualizado con éxito.
 
 REM Ir al directorio del backend y ejecutar la comprobación/npm install/start para el backend
