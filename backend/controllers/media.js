@@ -12,7 +12,7 @@ const searchMedia = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1701859968.15.1.1701859985.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=iZgjGHx2.hTnEBgFMSBWPmrDwhw3ElV5uNXpofgloHs-1701855916-0-1-6ac52d8.930039bf.d62ee2aa-0.2.1701855916; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=c3827bcdc92a2af8f99abc5129b7fd1f",
+          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -51,7 +51,7 @@ const getEpisodes = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1701859968.15.1.1701859985.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=iZgjGHx2.hTnEBgFMSBWPmrDwhw3ElV5uNXpofgloHs-1701855916-0-1-6ac52d8.930039bf.d62ee2aa-0.2.1701855916; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=c3827bcdc92a2af8f99abc5129b7fd1f",
+          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -125,7 +125,7 @@ const getReproducers = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1701859968.15.1.1701859985.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=iZgjGHx2.hTnEBgFMSBWPmrDwhw3ElV5uNXpofgloHs-1701855916-0-1-6ac52d8.930039bf.d62ee2aa-0.2.1701855916; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=c3827bcdc92a2af8f99abc5129b7fd1f",
+          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -231,7 +231,7 @@ const getMultiMediaPage = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1701859968.15.1.1701859985.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=iZgjGHx2.hTnEBgFMSBWPmrDwhw3ElV5uNXpofgloHs-1701855916-0-1-6ac52d8.930039bf.d62ee2aa-0.2.1701855916; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=c3827bcdc92a2af8f99abc5129b7fd1f",
+          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
