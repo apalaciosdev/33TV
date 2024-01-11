@@ -1,5 +1,5 @@
 
-#FUERA DE SERVICIO TEMPORALMENTE
+# FUERA DE SERVICIO TEMPORALMENTE
 Problema con Cloudfire captcha bypass en la plataforma donde se realiza el scraping.
 
 
