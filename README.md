@@ -1,6 +1,6 @@
 
 # FUERA DE SERVICIO TEMPORALMENTE
-Problema con Cloudfire captcha bypass en la plataforma donde se realiza el scraping.
+Problema con Cloudflare captcha bypass en la plataforma donde se realiza el scraping.
 
 
 # Bienvenido a 33TV!
