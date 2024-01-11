@@ -1,3 +1,8 @@
+
+#FUERA DE SERVICIO TEMPORALMENTE
+Problema con Cloudfire captcha bypass en la plataforma donde se realiza el scraping.
+
+
 # Bienvenido a 33TV!
 
 Esta es una plataforma donde puedes ver todas las series y películas que desees en español (España).
