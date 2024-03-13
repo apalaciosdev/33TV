@@ -6,40 +6,36 @@ const searchMedia = async (req, res = response) => {
   try {
     const { query } = req.params;
 
-    const url = "https://playdede.us/search?s=" + query;
+    const url = "https://pelisflix.press/?s=" + query;
     let data = [];
 
     const response = await axios.get(url, {
       headers: {
-        Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
-        Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
       },
     });
 
     const $ = cheerio.load(response.data);
-    const tvShowDivs = $(".item.tvshows");
+    const movieList = $(".MovieList li");
 
-    tvShowDivs.each((index, element) => {
-      const image = $(element).find(".poster img").attr("src");
+    movieList.each((index, element) => {
+      const image = $(element).find(".Image img").attr("data-src");
       const link = $(element).find("a").attr("href");
-      const date = $(element).find(".data p").text();
-      const title = $(element).find(".data h3").text();
-      const genre = $(element).find(".data span").text();
-      const dataType = $(element).find(".poster-mark").attr("data-type");
+      const date = $(element).find(".Info .Date").text();
+      const title = $(element).find(".Title").text();
+      const genre = $(element).find(".Genre a").text();
+      const dataType = "movies";
 
       data.push({ image, link, date, title, genre, dataType });
     });
 
-    return res.status(200).json(data);
+    return res.status(200).json(data); // Devuelve 'data' en lugar de 'response'
   } catch (error) {
     console.error("Error:", error.message);
     return res.status(500).json({ error: error.message });
   }
 };
-
 
 const getEpisodes = async (req, res = response) => {
   try {
