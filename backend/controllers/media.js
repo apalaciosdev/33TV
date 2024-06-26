@@ -6,11 +6,11 @@ const searchMedia = async (req, res = response) => {
   try {
     const { query } = req.params;
 
-    const url = "https://playdede.us/search?s=" + query;
+    const url = "https://pelisflix.press/?s=" + query;
     let data = [];
 
     const response = await axios.get(url, {
-      headers: {
+    headers: {
         Cookie:
           "_ga=GA1.1.582445904.1719410830; _ga_D4JK248BW=GS1.1.1719413797.2.0.1719413797.0.0.0; utoken=I8dX5brXMJ1CUGXVCDQHeoqNmMkV2Flf; PLAYDEDE_SESSION=38cc3083569efcc36acbabee10ab8f66; cf_clearance=RonE58mxrBOVOk7oZiwWUlj9ZdQDKToJK38qL_4i5Oo-1719420139-1.0.1.1-CFqKb2hxR3jLZ295cOq8xi5jR0hm1_2o1rspylCgPw2hQfESpLS9xV1dJQDlpu7060ZRJS4kxIDsi2DB1h.AGQ",
         Host: "playdede.us",
@@ -20,26 +20,25 @@ const searchMedia = async (req, res = response) => {
     });
 
     const $ = cheerio.load(response.data);
-    const tvShowDivs = $(".item.tvshows");
+    const movieList = $(".MovieList li");
 
-    tvShowDivs.each((index, element) => {
-      const image = $(element).find(".poster img").attr("src");
+    movieList.each((index, element) => {
+      const image = $(element).find(".Image img").attr("data-src");
       const link = $(element).find("a").attr("href");
-      const date = $(element).find(".data p").text();
-      const title = $(element).find(".data h3").text();
-      const genre = $(element).find(".data span").text();
-      const dataType = $(element).find(".poster-mark").attr("data-type");
+      const date = $(element).find(".Info .Date").text();
+      const title = $(element).find(".Title").text();
+      const genre = $(element).find(".Genre a").text();
+      const dataType = "movies";
 
       data.push({ image, link, date, title, genre, dataType });
     });
 
-    return res.status(200).json(data);
+    return res.status(200).json(data); // Devuelve 'data' en lugar de 'response'
   } catch (error) {
     console.error("Error:", error.message);
     return res.status(500).json({ error: error.message });
   }
 };
-
 
 const getEpisodes = async (req, res = response) => {
   try {
