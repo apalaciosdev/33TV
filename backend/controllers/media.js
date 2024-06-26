@@ -168,7 +168,7 @@ const getReproducers = async (req, res = response) => {
       if (dataLoadPlayer) {
         const iframeUrl = `https://playdede.us/embed.php?id=${dataLoadPlayer}&width=431&height=540`;
         // await getIframe(iframeUrl, resultados);
-        resultados.push(`<iframe src="${iframeUrl}" frameborder="0" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allowfullscreen" style="width: 95%; height: 95%; position: absolute; top: 0; left: 0; bottom: 0; right: 0;"></iframe>`);
+        resultados.push(`<iframe src="${iframeUrl}" frameborder="0" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allowfullscreen" style="width: 95%; height: 95%; position: absolute; top: 0; left: 0; bottom: 0; right: 0;" allow="fullscreen"></iframe>`);
       }
     }
 
