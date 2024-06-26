@@ -12,7 +12,7 @@ const searchMedia = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
+          "_ga=GA1.1.582445904.1719410830; _ga_D4JK248BW=GS1.1.1719413797.2.0.1719413797.0.0.0; utoken=I8dX5brXMJ1CUGXVCDQHeoqNmMkV2Flf; PLAYDEDE_SESSION=824fd055a5f77a2aa5b105e3ad12a3a1; cf_clearance=9whDRChFzzR27Y73ETKhpXg1_DaCnLXCkDShFlYvjjM-1719431131-1.0.1.1-3u.X_INVYS1rw502h1PYxijYzDOER8pePyqW84_40dReND7ukY.RU3GVQ203XtjMydZWQsLTOrk0gG0ST1g_hg",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -51,7 +51,7 @@ const getEpisodes = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
+          "_ga=GA1.1.582445904.1719410830; _ga_D4JK248BW=GS1.1.1719413797.2.0.1719413797.0.0.0; utoken=I8dX5brXMJ1CUGXVCDQHeoqNmMkV2Flf; PLAYDEDE_SESSION=824fd055a5f77a2aa5b105e3ad12a3a1; cf_clearance=9whDRChFzzR27Y73ETKhpXg1_DaCnLXCkDShFlYvjjM-1719431131-1.0.1.1-3u.X_INVYS1rw502h1PYxijYzDOER8pePyqW84_40dReND7ukY.RU3GVQ203XtjMydZWQsLTOrk0gG0ST1g_hg",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -125,7 +125,7 @@ const getReproducers = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
+        "_ga=GA1.1.582445904.1719410830; _ga_D4JK248BW=GS1.1.1719413797.2.0.1719413797.0.0.0; utoken=I8dX5brXMJ1CUGXVCDQHeoqNmMkV2Flf; PLAYDEDE_SESSION=824fd055a5f77a2aa5b105e3ad12a3a1; cf_clearance=9whDRChFzzR27Y73ETKhpXg1_DaCnLXCkDShFlYvjjM-1719431131-1.0.1.1-3u.X_INVYS1rw502h1PYxijYzDOER8pePyqW84_40dReND7ukY.RU3GVQ203XtjMydZWQsLTOrk0gG0ST1g_hg",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
@@ -232,7 +232,7 @@ const getMultiMediaPage = async (req, res = response) => {
     const response = await axios.get(url, {
       headers: {
         Cookie:
-          "_ga_D9G0K8CJ8D=GS1.1.1702465521.21.1.1702466936.0.0.0; _ga=GA1.1.750629935.1701513860; cf_clearance=xPd.DDocRvh0q9LlsxpiAnY30xZQCsh5RB0elDSTtBE-1702983687-0-1-20f8d367.c8f8c323.e9d3e0f7-160.2.1702983687; utoken=VBVZsybpGiDo5eQSH6CwlvR4nXMxicIh; PLAYDEDE_SESSION=4ee69aebcd05006fcf99a062653caae9; prefetchAd_6563022=true",
+          "_ga=GA1.1.582445904.1719410830; _ga_D4JK248BW=GS1.1.1719413797.2.0.1719413797.0.0.0; utoken=I8dX5brXMJ1CUGXVCDQHeoqNmMkV2Flf; PLAYDEDE_SESSION=824fd055a5f77a2aa5b105e3ad12a3a1; cf_clearance=9whDRChFzzR27Y73ETKhpXg1_DaCnLXCkDShFlYvjjM-1719431131-1.0.1.1-3u.X_INVYS1rw502h1PYxijYzDOER8pePyqW84_40dReND7ukY.RU3GVQ203XtjMydZWQsLTOrk0gG0ST1g_hg",
         Host: "playdede.us",
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
