@@ -19,6 +19,10 @@
 ### **Versión 1.0.4 (17 Dic. 2023)**
 - Idioma Latino añadido.
 
+### **Version 1.0.5 (27 Junio 2024)**
+- Habilitar todo el contenido.
+- Arreglar permitir pantalla completa.
+
 # New Features
 
 ### **Version 1.0.1 (11 Dec. 2023)**
@@ -37,5 +41,9 @@
 - Navbar updated.
 - New pages for Movies and TV Shows added.
 
-### **Versión 1.0.4 (17 Dec. 2023)**
+### **Version 1.0.4 (17 Dec. 2023)**
 - Latin language added.
+
+### **Version 1.0.5 (27 June 2024)**
+- Enable all content.
+- Fix allow full screen
